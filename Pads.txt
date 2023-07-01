@@ -1,0 +1,37 @@
+class notepad {
+  constructor() {
+    this.cursor = 0;
+    this.text = [];
+  }
+
+  addText(asciiCode) {
+  const symbol = String.fromCharCode(asciiCode);
+  this.text.splice(this.cursor, 0, symbol);
+  this.cursor++;
+  }
+
+  delete() {
+    if (this.text.length === 0 || this.cursor === 0) {
+      return "Delete error";
+    }
+    this.text.splice(this.cursor - 1, 1);
+    this.cursor--;
+    return "Deleted";
+  }
+
+  moveLeft() {
+    if (this.cursor > 0) {
+      this.cursor--;
+    }
+  }
+
+  moveRight() {
+    if (this.cursor < this.text.length) {
+      this.cursor++;
+    }
+  }
+
+  enter() {
+    return this.text.join("");
+  }
+}
